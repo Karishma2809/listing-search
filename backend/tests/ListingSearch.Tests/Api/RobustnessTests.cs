@@ -16,7 +16,7 @@ public class RobustnessTests
     private sealed class ExplodingRepository : IListingRepository
     {
         public Task<IReadOnlyList<Listing>> FindAsync(ListingCriteria criteria, CancellationToken cancellationToken = default) =>
-            throw new InvalidOperationException("secret connection string: Server=prod;Password=hunter2");
+            throw new InvalidOperationException("internal detail: storage-node-7 refused the connection");
 
         public Task<IReadOnlyList<CityName>> GetCitiesAsync(CancellationToken cancellationToken = default) =>
             Task.FromResult<IReadOnlyList<CityName>>([]);
@@ -48,7 +48,7 @@ public class RobustnessTests
         Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
         Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
         Assert.Equal(500, JsonDocument.Parse(raw).RootElement.GetProperty("status").GetInt32());
-        Assert.DoesNotContain("hunter2", raw);
+        Assert.DoesNotContain("storage-node-7", raw);
         Assert.DoesNotContain("InvalidOperationException", raw);
         Assert.DoesNotContain("   at ", raw);
     }
