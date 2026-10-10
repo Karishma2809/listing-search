@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ListingSearch.Domain\ListingSearch.Domain.csproj" />
+    <ProjectReference Include="..\ListingSearch.Application\ListingSearch.Application.csproj" />
+    <ProjectReference Include="..\ListingSearch.Infrastructure\ListingSearch.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Listing feed shipped with the API (copied verbatim from the assessment's sample_listings.json). -->
+    <Content Update="Data\sample_listings.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

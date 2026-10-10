@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ListingSearch.Domain\ListingSearch.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
